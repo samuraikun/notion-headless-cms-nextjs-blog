@@ -5,7 +5,7 @@ import React, { FC } from 'react'
 
 const Card: FC<CardProps> = ({ page }) => {
   return (
-    <Link href={`/`} className='flex justify-center'>
+    <Link href={`/articles/${page.slug}`} className='flex justify-center'>
       <div className='max-w-sm rounded overflow-hidden shadow-lg w-full my-4 md:my-0 content-between grid'>
         {/* image */}
         <div>
