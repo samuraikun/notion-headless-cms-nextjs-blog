@@ -4,13 +4,13 @@ import { Inter } from '@next/font/google'
 import Link from 'next/link'
 import Layout from '@/components/Layout'
 import { siteConfig } from '@/site.config'
-import { sampleCards } from '@/utils/sample'
 import Card from '@/components/Card'
 import { fetchPages } from '@/utils/notion'
 import { GetStaticProps, NextPage } from 'next'
+import { IndexProps } from '@/types/types'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { results } = await fetchPages()
+  const { results } = await fetchPages({})
   return {
     props: {
       pages: results ? results : []
@@ -19,15 +19,14 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export const Home: NextPage = ({ pages }) => {
-  console.log({pages})
+export const Home: NextPage<IndexProps> = ({ pages }) => {
   return (
     <Layout>
       <div className='pt-12'>
         <h1 className='text-5xl mb-8'>{siteConfig.title}</h1>
         <div className=' grid md:gap-6 mt-10 md:grid-cols-2 w-full my-12'>
           {/* Card */}
-          {sampleCards.map((page, index) => (
+          {pages.map((page, index) => (
             <Card key={index} page={page} />
           ))}
         </div>
