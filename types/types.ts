@@ -6,16 +6,6 @@ export type LayoutProps = {
   children: ReactNode
 }
 
-export type PageProps = {
-  slug: string
-  name: string
-  author: string
-  cover: string
-  published: string
-  tags: string[]
-  content: string
-}
-
 export type CardProps = { page: PageType }
 export type ArticleProps = {
   page: PageType

@@ -51,10 +51,6 @@ export const fetchPages = async ({ slug, tag }: { slug?: string, tag?: string })
   })
 }
 
-// export const fetchBlocksByPageId = async (pageId: string) => {
-//   return await notion.blocks.children.list({ block_id: pageId })
-// }
-
 export const fetchBlocksByPageId = async (pageId: string) => {
   const data = []
   let cursor = undefined
