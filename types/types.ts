@@ -1,5 +1,6 @@
 import { ParsedUrlQuery } from "querystring"
 import { ReactNode } from "react"
+import { BlockType } from "notion-block-renderer"
 
 export type LayoutProps = {
   children: ReactNode
@@ -63,11 +64,4 @@ export type PageType = {
   id: string
   cover: FileType | null
   properties: PropertyType
-}
-
-export type BlockType = {
-  type: string
-  heading_1: { rich_text: RichTextType[] }
-  heading_2: { rich_text: RichTextType[] }
-  paragraph: { rich_text: RichTextType[] }
 }

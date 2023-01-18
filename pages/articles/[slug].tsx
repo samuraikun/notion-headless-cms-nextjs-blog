@@ -1,11 +1,12 @@
+import React from 'react'
 import ArticleMeta from '@/components/ArticleMeta'
-import Block from '@/components/Block'
 import Layout from '@/components/Layout'
 import { ArticleProps, Params } from '@/types/types'
 import { fetchBlocksByPageId, fetchPages } from '@/utils/notion'
 import { getText } from '@/utils/property'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import React from 'react'
+import NotionBlocks from 'notion-block-renderer'
+import { monokai } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { results } = await fetchPages({})
@@ -48,9 +49,11 @@ const Article: NextPage<ArticleProps> = ({ page, blocks }) => {
 
         {/* article */}
         <div className='my-12'>
-          {blocks.map((block, index) => (
-            <Block key={index} block={block} />
-          ))}
+          <NotionBlocks
+            blocks={blocks}
+            isCodeHighlighter={true}
+            syntaxHighlighterCSS={monokai}
+          />
         </div>
       </article>
     </Layout>
