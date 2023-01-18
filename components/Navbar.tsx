@@ -1,6 +1,7 @@
 import { siteConfig } from '@/site.config'
 import Link from 'next/link'
 import React from 'react'
+import Breadcrumb from './Breadcrumb'
 
 export default function Navbar() {
   return (
@@ -11,6 +12,7 @@ export default function Navbar() {
             {siteConfig.title}
           </Link>
           {/* Breadcrumb */}
+          <Breadcrumb />
         </div>
       </div>
     </nav>
