@@ -6,7 +6,7 @@ import React, { FC } from 'react'
 
 const Card: FC<CardProps> = ({ page }) => {
   return (
-    <Link href={`/articles/${getText(page.properties.slug.rich_text)}`} className='flex justify-center'>
+    <Link href={`/articles/${getText(page.properties.slug.rich_text)}`} className='flex justify-center dark:bg-slate-800'>
       <div className='max-w-sm rounded overflow-hidden shadow-lg w-full my-4 md:my-0 content-between grid'>
         {/* image */}
         <div>
@@ -31,7 +31,7 @@ const Card: FC<CardProps> = ({ page }) => {
           {getMultiSelect(page.properties.tags.multi_select).map((tag, index) => (
             <span
               key={index}
-              className='text-sm px-2 py-1 font-normal bg-gray-200 rounded-lg break-words mr-2 mb-2'
+              className='text-sm px-2 py-1 font-normal bg-gray-200 rounded-lg break-words mr-2 mb-2 dark:bg-slate-500'
             >
               {`#${tag}`}
             </span>

@@ -20,7 +20,7 @@ export const ArticleMeta: FC<ArticleMetaProps> = ({ page }) => {
 
       {/* page name */}
       <h1 className='my-8'>{getText(page.properties.name.title)}</h1>
-      <div className='bg-gray-100 px-6 py-4 rounded text-sm text-gray-500'>
+      <div className='bg-gray-100 px-6 py-4 rounded text-sm text-gray-500 dark:bg-slate-700 dark:text-white'>
         <div className='grid grid-cols-3 gap-4'>
           {/* published */}
           <div className='col-span-1'>Published</div>
@@ -35,7 +35,7 @@ export const ArticleMeta: FC<ArticleMetaProps> = ({ page }) => {
           <div className='col-span-2'>
             {/* change later */}
             {getMultiSelect(page.properties.tags.multi_select).map((tag, index) => (
-              <Link key={index} href={`/tags/${tag}`} className='text-gray-700 no-underline border-b border-solid border-gray-700 opacity-70 mr-3'>
+              <Link key={index} href={`/tags/${tag}`} className='text-gray-700 no-underline border-b border-solid border-gray-700 opacity-70 mr-3 dark:text-white dark:border-white'>
                 <span>{`#${tag}`}</span>
               </Link>
             ))}
