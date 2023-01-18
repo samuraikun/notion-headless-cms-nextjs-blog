@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <footer className='text-center bg-gray-900 text-white w-screen block'>
+    <footer className='text-center bg-gray-900 text-white w-screen block dark:bg-slate-900'>
       <div className='flex justify-center p-4 text-white'>
         {/* Twitter */}
         {siteConfig.twitterUrl && (

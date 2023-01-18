@@ -5,7 +5,7 @@ import Navbar from './Navbar'
 
 export const Layout: FC<LayoutProps> = ({ children }) => {
   return (
-    <div className='relative overflow-hidden'>
+    <div className='relative overflow-hidden dark:bg-slate-900 dark:text-white'>
       <div className='flex flex-col items-center max-w-2xl w-full mx-auto'>
         {/*  */}
         <Navbar />
