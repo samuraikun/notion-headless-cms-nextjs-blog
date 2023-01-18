@@ -51,6 +51,24 @@ export const fetchPages = async ({ slug, tag }: { slug?: string, tag?: string })
   })
 }
 
+// export const fetchBlocksByPageId = async (pageId: string) => {
+//   return await notion.blocks.children.list({ block_id: pageId })
+// }
+
 export const fetchBlocksByPageId = async (pageId: string) => {
-  return await notion.blocks.children.list({ block_id: pageId })
+  const data = []
+  let cursor = undefined
+
+  while (true) {
+    const { results, next_cursor }: any = await notion.blocks.children.list({
+      block_id: pageId,
+      start_cursor: cursor
+    })
+
+    data.push(...results)
+    if (!next_cursor) break
+    cursor = next_cursor
+  }
+
+  return { results: data }
 }
