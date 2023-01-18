@@ -4,26 +4,27 @@ import Layout from '@/components/Layout'
 import { ArticleProps, Params } from '@/types/types'
 import { fetchBlocksByPageId, fetchPages } from '@/utils/notion'
 import { getText } from '@/utils/property'
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { GetServerSideProps, GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import NotionBlocks from 'notion-block-renderer'
 import { monokai } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const { results } = await fetchPages({})
-  const paths = results.map((page: any) => {
-    return {
-      params: {
-        slug: getText(page.properties.slug.rich_text)
-      }
-    }
-  })
-  return {
-    paths: paths,
-    fallback: 'blocking' // Notionからのデータ取得が完了してからレンダリングするようブロッキングする
-  }
-}
+// NOTE: Notion内にあるImageは有効期限が1時間のため、ISRではなくSSRで都度データを取得する
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const { results } = await fetchPages({})
+//   const paths = results.map((page: any) => {
+//     return {
+//       params: {
+//         slug: getText(page.properties.slug.rich_text)
+//       }
+//     }
+//   })
+//   return {
+//     paths: paths,
+//     fallback: 'blocking' // Notionからのデータ取得が完了してからレンダリングするようブロッキングする
+//   }
+// }
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { slug } = ctx.params as Params
   const { results } = await fetchPages({ slug: slug })
   const page = results[0]
@@ -31,8 +32,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const { results: blocks } = await fetchBlocksByPageId(pageId)
 
   return {
-    props: { page, blocks },
-    revalidate: 10
+    props: { page, blocks }
   }
 }
 
