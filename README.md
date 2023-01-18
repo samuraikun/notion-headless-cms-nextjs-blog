@@ -9,6 +9,8 @@ I wanted to create my own blog and use Notion as an editor for writing articles,
 ## Ref
 - This repo is based on [notion-next-blog-course](https://github.com/takux/notion-next-blog-course)
   - https://www.udemy.com/share/106MVk3@Dk6VAPO7ap6ww84XQYVzDpuFcvQpFnSmEk6P3zT9JRTzcpeoYZ2toaBhgRl3eW_f/
+- Notion API Reference
+  - https://developers.notion.com/reference/intro
 
 ## Architecture
 
@@ -16,7 +18,8 @@ I wanted to create my own blog and use Notion as an editor for writing articles,
 sequenceDiagram
   participant Notion
   participant Next.js
-  Notion->>Next.js: fetch data via Notion API
+  Next.js->>Notion: fetch data via Notion API
+  Notion->>Next.js: return pages, blocks object
 ```
 
 ## Tech Stack
@@ -24,6 +27,7 @@ sequenceDiagram
 - Next.js v13.1.2
 - TypeScript v4.9.4
 - @notionhq/client(Notion API Client) v1.0.4
+  - The latest version is v2, but due to destructive changes in the API interface, v1 is used.
 
 ## Getting Started
 
@@ -50,3 +54,5 @@ npm run start
 
 This app is using Vercel.
 So, git push only.
+
+URL: https://samuraikun-notion-blog.vercel.app/
