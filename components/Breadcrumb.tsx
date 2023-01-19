@@ -11,8 +11,8 @@ const Breadcrumb = () => {
         if (path) {
           joinedPath += path + '/'
           return (
-            <Link  key={index} href={`/${joinedPath}`} className='text-gray-500 hover:text-gray-600'>
-              <span className='text-gray-500 mx-2'>/</span> {path}
+            <Link  key={index} href={`/${joinedPath}`} className='text-gray-500 hover:text-gray-600 dark:text-slate-300 dark:hover:text-white'>
+              <span className='text-gray-500 mx-2 dark:text-slate-300'>/</span> {path}
             </Link>
           )
         }
