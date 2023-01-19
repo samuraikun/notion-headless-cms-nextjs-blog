@@ -33,6 +33,17 @@ sequenceDiagram
 
 ## Getting Started
 
+### setup Notion API
+see https://developers.notion.com/docs/create-a-notion-integration
+
+After creating the Notion API secret key and database, change .env.local as follows
+
+```
+NOTION_KEY=secret_xxx
+NOTION_DATABASE_ID=xxx
+```
+
+### run local
 First, run the development server:
 
 ```bash
