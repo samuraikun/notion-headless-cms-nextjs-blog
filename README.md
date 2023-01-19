@@ -2,6 +2,8 @@
 
 This repository is for displaying articles written in Notion in a blog application implemented in Next.js.
 
+![2e062e0eb21e02acdf2e4c15583f4ff4](https://user-images.githubusercontent.com/7115171/213412085-2830728b-a487-439e-817b-4dba7b6c7d19.gif)
+
 ## Motivation for this Repository
 
 I wanted to create my own blog and use Notion as an editor for writing articles, which is what I am used to doing.
