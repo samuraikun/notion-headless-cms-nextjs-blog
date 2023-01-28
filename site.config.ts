@@ -1,6 +1,6 @@
 export const siteConfig = {
-  title: 'Samuraikun Blog',
-  url: 'https://samuraikun-notion-blog.vercel.app',
+  title: 'Samuraikun Dev',
+  url: 'https://www.samuraikun.dev',
   description: "A blog samuraikun's tech blog.",
   twitter: 'YuxBeta',
   twitterUrl: 'https://twitter.com/YuxBeta',
