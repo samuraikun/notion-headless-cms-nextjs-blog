@@ -19,6 +19,12 @@ export type TagProps = IndexProps & { tag: string }
 
 export type BlockProps = { block: BlockType }
 
+export type SEOProps = {
+  title: string
+  description?: string
+  cover?: string
+}
+
 export type Params = ParsedUrlQuery & {
   slug?: string
   tag?: string

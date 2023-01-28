@@ -7,7 +7,7 @@ const Bio = () => {
     <div className='flex items-center'>
       <Image
         className='flex-shrink-0 mb-3 mr-3 rounded-full w-14 h-14'
-        src={require('../assets/profile_logo.png')}
+        src={require('../public/profile_logo.png')}
         alt='Profile'
       />
       <p className="text-base leading-7">
