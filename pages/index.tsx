@@ -5,6 +5,7 @@ import { GetServerSideProps, GetStaticProps, NextPage } from 'next'
 import { IndexProps } from '@/types/types'
 import Bio from '@/components/Bio'
 import SEO from '@/components/Seo'
+import { siteConfig } from '@/site.config'
 
 export const getStaticProps: GetStaticProps = async () => {
   const { results } = await fetchPages({})
@@ -28,7 +29,7 @@ export const getStaticProps: GetStaticProps = async () => {
 export const Home: NextPage<IndexProps> = ({ pages }) => {
   return (
     <Layout>
-      <SEO title='All articles' />
+      <SEO title={siteConfig.title} />
       <div className='pt-5'>
         {/* <h1 className='text-5xl mb-8'>{siteConfig.title}</h1> */}
         {/* Bio */}
