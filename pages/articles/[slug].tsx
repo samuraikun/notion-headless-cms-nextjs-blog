@@ -10,22 +10,34 @@ import { monokai } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import SEO from '@/components/Seo'
 
 // NOTE: Notion内にあるImageは有効期限が1時間のため、ISRではなくSSRで都度データを取得する
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const { results } = await fetchPages({})
-//   const paths = results.map((page: any) => {
-//     return {
-//       params: {
-//         slug: getText(page.properties.slug.rich_text)
-//       }
-//     }
-//   })
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { results } = await fetchPages({})
+  const paths = results.map((page: any) => {
+    return {
+      params: {
+        slug: getText(page.properties.slug.rich_text)
+      }
+    }
+  })
+  return {
+    paths: paths,
+    fallback: 'blocking' // Notionからのデータ取得が完了してからレンダリングするようブロッキングする
+  }
+}
+
+// export const getServerSideProps: GetServerSideProps = async (ctx) => {
+//   const { slug } = ctx.params as Params
+//   const { results } = await fetchPages({ slug: slug })
+//   const page = results[0]
+//   const pageId = page.id
+//   const { results: blocks } = await fetchBlocksByPageId(pageId)
+
 //   return {
-//     paths: paths,
-//     fallback: 'blocking' // Notionからのデータ取得が完了してからレンダリングするようブロッキングする
+//     props: { page, blocks }
 //   }
 // }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   const { slug } = ctx.params as Params
   const { results } = await fetchPages({ slug: slug })
   const page = results[0]
@@ -33,7 +45,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { results: blocks } = await fetchBlocksByPageId(pageId)
 
   return {
-    props: { page, blocks }
+    props: { page, blocks },
+    revalidate: 10 // ISRを実行するために必要な設定。指定した秒数が経過したらfetchが走り、記事に差分があれば再ビルド
   }
 }
 
