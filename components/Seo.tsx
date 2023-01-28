@@ -4,7 +4,9 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 
-const SEO: FC<SEOProps> = ({ title, description = '', cover = '/assets/profile_logo.png' }) => {
+const coverImage = 'https://avatars.githubusercontent.com/u/7115171'
+
+const SEO: FC<SEOProps> = ({ title, description = '', cover = coverImage }) => {
   const metaDescription = description || siteConfig.description
   const { asPath, pathname } = useRouter()
 
