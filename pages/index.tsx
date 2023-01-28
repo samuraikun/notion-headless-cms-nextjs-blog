@@ -4,6 +4,7 @@ import { fetchPages } from '@/utils/notion'
 import { GetServerSideProps, NextPage } from 'next'
 import { IndexProps } from '@/types/types'
 import Bio from '@/components/Bio'
+import SEO from '@/components/Seo'
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const { results } = await fetchPages({})
@@ -17,6 +18,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export const Home: NextPage<IndexProps> = ({ pages }) => {
   return (
     <Layout>
+      <SEO title='All articles' />
       <div className='pt-5'>
         {/* <h1 className='text-5xl mb-8'>{siteConfig.title}</h1> */}
         {/* Bio */}

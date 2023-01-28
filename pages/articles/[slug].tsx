@@ -3,10 +3,11 @@ import ArticleMeta from '@/components/ArticleMeta'
 import Layout from '@/components/Layout'
 import { ArticleProps, Params } from '@/types/types'
 import { fetchBlocksByPageId, fetchPages } from '@/utils/notion'
-import { getText } from '@/utils/property'
+import { getCover, getText } from '@/utils/property'
 import { GetServerSideProps, GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import NotionBlocks from 'notion-block-renderer'
 import { monokai } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import SEO from '@/components/Seo'
 
 // NOTE: Notion内にあるImageは有効期限が1時間のため、ISRではなくSSRで都度データを取得する
 // export const getStaticPaths: GetStaticPaths = async () => {
@@ -39,6 +40,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 const Article: NextPage<ArticleProps> = ({ page, blocks }) => {
   return (
     <Layout>
+      <SEO title={getText(page.properties.name.title)} cover={getCover(page.cover)} />
       <article className='w-full'>
         {/* meta section */}
         <div className='my-12'>
