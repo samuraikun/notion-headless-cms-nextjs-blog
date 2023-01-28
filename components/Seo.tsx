@@ -4,9 +4,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 
-const profileImage = require('../assets/profile_logo.png')
-
-const SEO: FC<SEOProps> = ({ title, description = '', cover = profileImage }) => {
+const SEO: FC<SEOProps> = ({ title, description = '', cover = '/assets/profile_logo.png' }) => {
   const metaDescription = description || siteConfig.description
   const { asPath, pathname } = useRouter()
 
@@ -24,8 +22,8 @@ const SEO: FC<SEOProps> = ({ title, description = '', cover = profileImage }) =>
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content={`@${siteConfig.twitter}`} />
       <meta name="twitter:creator" content={`@${siteConfig.twitter}`} />
-      <link rel="icon" type="image/png" href="/assets/favicon.ico" />
-      <link rel="apple-touch-icon" href="/assets/favicon.ico" />
+      <link rel="icon" type="image/png" href='/assets/favicon.ico' />
+      <link rel="apple-touch-icon" href='/assets/favicon.ico' />
     </Head>
   )
 }
