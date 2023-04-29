@@ -26,10 +26,6 @@ export const ArticleMeta: FC<ArticleMetaProps> = ({ page }) => {
           <div className='col-span-1'>Published</div>
           <div className='col-span-2'>{getDate(page.properties.published.date)}</div>
 
-          {/* author */}
-          <div className='col-span-1'>Author</div>
-          <div className='col-span-2'>{getText(page.properties.author.rich_text)}</div>
-
           {/* tags */}
           <div className='col-span-1'>Tags</div>
           <div className='col-span-2'>
