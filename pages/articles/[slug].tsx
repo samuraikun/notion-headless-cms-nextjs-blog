@@ -9,36 +9,22 @@ import NotionBlocks from 'notion-block-renderer'
 import { monokai } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import SEO from '@/components/Seo'
 
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const { results } = await fetchPages({})
-//   const paths = results.map((page: any) => {
-//     return {
-//       params: {
-//         slug: getText(page.properties.slug.rich_text)
-//       }
-//     }
-//   })
-//   return {
-//     paths: paths,
-//     fallback: 'blocking' // Notionからのデータ取得が完了してからレンダリングするようブロッキングする
-//   }
-// }
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { results } = await fetchPages({})
+  const paths = results.map((page: any) => {
+    return {
+      params: {
+        slug: getText(page.properties.slug.rich_text)
+      }
+    }
+  })
+  return {
+    paths: paths,
+    fallback: 'blocking' // Notionからのデータ取得が完了してからレンダリングするようブロッキングする
+  }
+}
 
-// export const getStaticProps: GetStaticProps = async (ctx) => {
-//   const { slug } = ctx.params as Params
-//   const { results } = await fetchPages({ slug: slug })
-//   const page = results[0]
-//   const pageId = page.id
-//   const { results: blocks } = await fetchBlocksByPageId(pageId)
-
-//   return {
-//     props: { page, blocks },
-//     revalidate: 10 // ISRを実行するために必要な設定。指定した秒数が経過したらfetchが走り、記事に差分があれば再ビルド
-//   }
-// }
-
-// NOTE: Notion内にあるImageは有効期限が1時間のため、ISRではなくSSRで都度データを取得する
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   const { slug } = ctx.params as Params
   const { results } = await fetchPages({ slug: slug })
   const page = results[0]
@@ -46,9 +32,23 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { results: blocks } = await fetchBlocksByPageId(pageId)
 
   return {
-    props: { page, blocks }
+    props: { page, blocks },
+    revalidate: 10 // ISRを実行するために必要な設定。指定した秒数が経過したらfetchが走り、記事に差分があれば再ビルド
   }
 }
+
+// NOTE: Notion内にあるImageは有効期限が1時間のため、ISRではなくSSRで都度データを取得する
+// export const getServerSideProps: GetServerSideProps = async (ctx) => {
+//   const { slug } = ctx.params as Params
+//   const { results } = await fetchPages({ slug: slug })
+//   const page = results[0]
+//   const pageId = page.id
+//   const { results: blocks } = await fetchBlocksByPageId(pageId)
+
+//   return {
+//     props: { page, blocks }
+//   }
+// }
 
 const Article: NextPage<ArticleProps> = ({ page, blocks }) => {
   return (
