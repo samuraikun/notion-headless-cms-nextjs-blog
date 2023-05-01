@@ -22,7 +22,7 @@
     "react-dom": "18.2.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-toggle-dark-mode": "^1.1.1",
-    "sharp": "^0.31.3",
+    "sharp": "^0.32.1",
     "typescript": "5.0.4"
   },
   "devDependencies": {
