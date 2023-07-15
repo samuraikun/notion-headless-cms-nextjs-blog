@@ -11,15 +11,16 @@ const Bio = () => {
         alt='Profile'
       />
       <p className="text-base leading-7">
-        Author: <b className="font-semibold">Yuichi Kojima</b>
-        <br></br>
-        Twitter:{" "}
-        <a href={siteConfig.twitterUrl} className='hover:underline'>
-          YuxBeta
-        </a>
+        Linkedin:{" "}
+        <a href={siteConfig.linkedinUrl} className='font-semibold hover:underline'>Yuichi Kojima</a>
         <br></br>
         Github:{" "}
-        <a href={siteConfig.githubUrl} className='hover:underline'>samuraikun</a>
+        <a href={siteConfig.githubUrl} className='font-semibold hover:underline'>samuraikun</a>
+        <br></br>
+        Twitter:{" "}
+        <a href={siteConfig.twitterUrl} className='font-semibold hover:underline'>
+          YuxBeta
+        </a>
       </p>
     </div>
   )

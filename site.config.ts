@@ -5,4 +5,5 @@ export const siteConfig = {
   twitter: 'YuxBeta',
   twitterUrl: 'https://twitter.com/YuxBeta',
   githubUrl: 'https://github.com/samuraikun',
+  linkedinUrl: 'https://www.linkedin.com/in/yuichi-kojima-b2756995/',
 }
