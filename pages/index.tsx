@@ -1,7 +1,7 @@
 import Layout from '@/components/Layout'
 import Card from '@/components/Card'
 import { fetchPages } from '@/utils/notion'
-import { GetServerSideProps, GetStaticProps, NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import { IndexProps } from '@/types/types'
 import Bio from '@/components/Bio'
 import SEO from '@/components/Seo'

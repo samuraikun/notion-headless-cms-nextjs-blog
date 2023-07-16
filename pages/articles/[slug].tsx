@@ -4,7 +4,7 @@ import Layout from '@/components/Layout'
 import { ArticleProps, Params } from '@/types/types'
 import { fetchBlocksByPageId, fetchPages } from '@/utils/notion'
 import { getCover, getText } from '@/utils/property'
-import { GetServerSideProps, GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import NotionBlocks from 'notion-block-renderer'
 import { monokai } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import SEO from '@/components/Seo'

@@ -1,8 +1,8 @@
 import Layout from '@/components/Layout'
 import Card from '@/components/Card'
 import { fetchPages } from '@/utils/notion'
-import { GetServerSideProps, GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { IndexProps, Params, TagProps } from '@/types/types'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { Params, TagProps } from '@/types/types'
 import { getMultiSelect } from '@/utils/property'
 
 // NOTE: Notion内にあるImageは有効期限が1時間のため、ISRではなくSSRで都度データを取得する
@@ -48,7 +48,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 //       pages: results ? results : [],
 //       tag: tag
 //     }
-//     // revalidate: 10 // ISRを実行するために必要な設定。指定した秒数が経過したらfetchが走り、記事に差分があれば再ビルド
 //   }
 // }
 
