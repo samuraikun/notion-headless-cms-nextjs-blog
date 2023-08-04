@@ -1,0 +1,25 @@
+name: Deploy to Vercel
+
+on:
+  schedule:
+    # Run at everyday 15:35 UTC/GMT -7hours
+    - cron: '35 22 * * *'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      # build command
+      - run: npm install
+      - run: npm run build
+      # deploy command
+      - uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
