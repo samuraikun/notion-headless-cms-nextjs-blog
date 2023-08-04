@@ -1,9 +1,13 @@
 name: Deploy to Vercel
 
 on:
-  schedule:
-    # Run at everyday 15:35 UTC/GMT -7hours
-    - cron: '35 22 * * *'
+  push:
+    branches:
+      - cron/deploy-to-vercel
+  # schedule:
+  #   # Run at everyday 15:35 UTC/GMT -7hours
+  #   - cron: '35 22 * * *'
+
 
 jobs:
   deploy:
