@@ -8,6 +8,9 @@ on:
   #   # Run at everyday 15:35 UTC/GMT -7hours
   #   - cron: '35 22 * * *'
 
+env:
+  NOTION_KEY: ${{ secrets.NOTION_KEY }}
+  NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
 
 jobs:
   deploy:
