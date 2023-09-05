@@ -2,8 +2,9 @@ name: Deploy to Vercel
 
 on:
   schedule:
-    # Run at everyday 10:00 UTC/GMT -7hours
-    - cron: '0 17 * * *'
+    # Run at every 1 hour
+    # Notion images are expired after 1 hour
+    - cron: '0 * * * *'
 
 jobs:
   deploy:
