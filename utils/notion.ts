@@ -6,18 +6,21 @@ const DATABASE_ID = process.env.NOTION_DATABASE_ID as string
 export const fetchPages = async ({ slug, tag }: { slug?: string, tag?: string }) => {
   const and: any = [
     {
-      property: 'isPublic',
-      checkbox: {
-        equals: true
-      }
-    },
-    {
       property: 'slug',
       rich_text: {
         is_not_empty: true
       }
     }
   ]
+
+  if (process.env.NODE_ENV === 'production') {
+    and.push({
+      property: 'isPublic',
+      checkbox: {
+        equals: true
+      }
+    })
+  }
 
   if (slug) {
     and.push({
