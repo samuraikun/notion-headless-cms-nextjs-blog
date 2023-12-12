@@ -13,7 +13,7 @@ export const fetchPages = async ({ slug, tag }: { slug?: string, tag?: string })
     }
   ]
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.VERCEL_ENV === 'production') {
     and.push({
       property: 'isPublic',
       checkbox: {
